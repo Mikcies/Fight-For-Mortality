@@ -5,11 +5,11 @@ public class Shield : MonoBehaviour
 {
     [SerializeField] GameObject playerBullet;
     [SerializeField] Transform bulletSpawnPoint;
-    private Parry parryScript; // Reference na Parry skript na hráči
+    private Parry parryScript; 
 
     private void Start()
     {
-        parryScript = GetComponentInParent<Parry>(); // Předpokládáme, že Parry skript je na rodiči (hráč)
+        parryScript = GetComponentInParent<Parry>(); 
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -20,7 +20,6 @@ public class Shield : MonoBehaviour
 
             Instantiate(playerBullet, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
 
-            // Volání úspěšného parry, aby se zamezilo penalizaci
             if (parryScript != null)
             {
                 parryScript.SuccessfulParry();

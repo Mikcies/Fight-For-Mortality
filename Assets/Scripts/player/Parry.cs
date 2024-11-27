@@ -6,12 +6,12 @@ public class Parry : MonoBehaviour
     [SerializeField] GameObject shield;
     [SerializeField] float shieldDuration = 0.2f;
     [SerializeField] float cooldownDuration = 2.0f;
-    [SerializeField] float punishDuration = 1.5f; // Penalizace při netrefení parry
+    [SerializeField] float punishDuration = 2f; 
     [SerializeField] GameObject playerBullet;
     [SerializeField] Transform bulletSpawnPoint;
 
     internal bool isParrying = false;
-    bool missedParry = false; // Označuje, že parry byla netrefena
+    bool missedParry = false; 
     float parryTimer = 0f;
     float cooldownTimer = 0f;
     private playerMove playerMovement;
@@ -38,7 +38,6 @@ public class Parry : MonoBehaviour
         {
             parryTimer -= Time.deltaTime;
 
-            // Po vypršení času na parry kontrolujeme, zda byl parry úspěšný
             if (parryTimer <= 0f)
             {
                 if (missedParry)
@@ -53,9 +52,9 @@ public class Parry : MonoBehaviour
     private void ActivateParry()
     {
         isParrying = true;
-        missedParry = true; // Předpokládáme, že parry mine
+        missedParry = true; 
         shield.SetActive(true);
-        playerMovement.canMove = false; // Zastaví pohyb během parry
+        playerMovement.canMove = false; 
         parryTimer = shieldDuration;
         cooldownTimer = cooldownDuration;
     }
@@ -71,17 +70,16 @@ public class Parry : MonoBehaviour
     {
         Debug.Log("Parry netrefeno! Aplikace penalizace.");
         playerMovement.Walkspeed = 2f; 
-        Invoke("RestoreMovement", punishDuration); // Obnovení pohybu po penalizaci
+        Invoke("RestoreMovement", punishDuration); 
     }
 
     private void RestoreMovement()
     {
-        playerMovement.Walkspeed = 5f; // Nastaví původní rychlost hráče
+        playerMovement.Walkspeed = 5f; 
     }
 
-    // Metoda pro úspěšný parry - volá se z ShieldParry při kolizi s projektily
     public void SuccessfulParry()
     {
-        missedParry = false; // Zruší penalizaci při úspěšném parry
+        missedParry = false; 
     }
 }

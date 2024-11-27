@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class playerMove : MonoBehaviour
@@ -39,7 +40,6 @@ public class playerMove : MonoBehaviour
         {
             rb.velocity = Vector2.zero;
             rb.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
-
         }
     }
 
@@ -65,6 +65,9 @@ public class playerMove : MonoBehaviour
             yMove = Jump;
         }
 
+        if(rb.velocity.y < 0)
+        {
+        }
         if (xMove > 0)
         {
             transform.localScale = new Vector3(1f, 1f, 1f);

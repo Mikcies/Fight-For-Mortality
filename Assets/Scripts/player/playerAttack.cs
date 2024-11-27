@@ -25,7 +25,7 @@ public class PlayerMeleeAttack : MonoBehaviour
 
         if (Time.time >= nextAttackTime && !parry.isParrying)
         {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            if (Input.GetKeyDown(KeyCode.Mouse1))
             {
                 meleeAttack();
                 nextAttackTime = Time.time + 1f / attackRate;
@@ -36,6 +36,7 @@ public class PlayerMeleeAttack : MonoBehaviour
     void meleeAttack()
     {
         // animator.SetTrigger("Attack");
+        Debug.Log("Attack");
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
         foreach (Collider2D enemy in hitEnemies)
         {

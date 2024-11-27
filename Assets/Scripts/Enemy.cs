@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
+using UnityEngine.SceneManagement;
+
 
 public class Enemy : MonoBehaviour
 {
@@ -10,16 +13,15 @@ public class Enemy : MonoBehaviour
     SpriteRenderer spriteRenderer;
     public float flashDuration = 0.1f;
 
-    // New variables for shooting
-    public GameObject bulletPrefab; // Prefab for the bullet
-    public Transform firePoint; // Point from which the bullet will be fired
-    public float shootInterval = 5f; // Time interval between shots
+    public GameObject bulletPrefab; 
+    public Transform firePoint; 
+    public float shootInterval = 5f; 
 
     void Start()
     {
         currentHealth = maxHealth;
         spriteRenderer = GetComponent<SpriteRenderer>();
-        StartCoroutine(ShootRoutine()); // Start the shooting routine
+        StartCoroutine(ShootRoutine()); 
     }
 
     public void TakeDamage(int damage)
@@ -47,6 +49,7 @@ public class Enemy : MonoBehaviour
         GetComponent<Rigidbody2D>().gravityScale = 0;
 
         Destroy(gameObject);
+        SceneManager.LoadScene("WorldMap"); 
     }
 
     IEnumerator ShootRoutine()
@@ -58,7 +61,6 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    // Method to handle shooting
     void Shoot()
     {
         if (bulletPrefab != null && firePoint != null)

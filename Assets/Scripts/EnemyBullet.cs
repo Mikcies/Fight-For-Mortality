@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnemyBullet : MonoBehaviour
 {
-    public float speed = 10f; // Speed of the bullet
-    public float lifetime = 2f; // Time before the bullet is destroyed
+    public float speed = 10f; 
+    public float lifetime = 2f; 
 
     private Rigidbody2D rb;
 
