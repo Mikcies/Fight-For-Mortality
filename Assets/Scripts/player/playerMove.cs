@@ -20,6 +20,8 @@ public class playerMove : MonoBehaviour
     [SerializeField]
     private LayerMask floorLayerMask;
 
+    [SerializeField]
+    Animator animator;
     private bool isGrounded = false;
 
     internal bool canMove = true; 
@@ -53,20 +55,48 @@ public class playerMove : MonoBehaviour
         if (Input.GetKey(KeyCode.D))
         {
             xMove = Walkspeed;
+            animator.SetBool("Run", true);
+        }
+        if (Input.GetKeyUp(KeyCode.D))
+        {
+            xMove = Walkspeed;
+            animator.SetBool("Run", false);
         }
 
         if (Input.GetKey(KeyCode.A))
         {
             xMove = -Walkspeed;
+            animator.SetBool("Run", true);
+        }
+        if (Input.GetKeyUp(KeyCode.A))
+        {
+            xMove = -Walkspeed;
+            animator.SetBool("Run", false);
         }
 
         if (Input.GetKeyDown(KeyCode.W) && isGrounded)
         {
             yMove = Jump;
+            animator.SetBool("IsJumping", true); 
+            animator.SetBool("IsFalling", false); 
         }
 
-        if(rb.velocity.y < 0)
+        if (!isGrounded && yMove > 0)
         {
+            animator.SetBool("IsJumping", true); 
+            animator.SetBool("IsFalling", false);
+        }
+
+        if (!isGrounded && yMove <= 0)
+        {
+            animator.SetBool("IsJumping", false); 
+            animator.SetBool("IsFalling", true);  
+        }
+
+        if (isGrounded)
+        {
+            animator.SetBool("IsJumping", false); 
+            animator.SetBool("IsFalling", false); 
         }
         if (xMove > 0)
         {

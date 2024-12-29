@@ -17,6 +17,8 @@ public class PlayerMeleeAttack : MonoBehaviour
     [SerializeField]
     float nextAttackTime = 0f;
 
+    [SerializeField]
+    Animator animator;
     Parry parry;
 
     void Update()
@@ -35,17 +37,24 @@ public class PlayerMeleeAttack : MonoBehaviour
 
     void meleeAttack()
     {
-        // animator.SetTrigger("Attack");
+        animator.SetBool("Attack", true);
         Debug.Log("Attack");
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
         foreach (Collider2D enemy in hitEnemies)
         {
-            enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+            enemy.GetComponent<BossBase>().TakeDamage(attackDamage);
             Debug.Log("We hit " + enemy.name);
         }
+        StartCoroutine(ResetAttackAnimation());
+    }
+    IEnumerator ResetAttackAnimation()
+    {
+        yield return new WaitForSeconds(0.5f);
+        animator.SetBool("Attack", false);
     }
 
-    private void OnDrawGizmosSelected()
+
+private void OnDrawGizmosSelected()
     {
         if (attackPoint == null)
             return;

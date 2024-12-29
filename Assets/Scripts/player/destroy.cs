@@ -9,7 +9,7 @@ public class destroy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("enemy"))
         {
-            Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+            BossBase enemy = collision.gameObject.GetComponent<BossBase>();
 
             if (enemy != null)
             {

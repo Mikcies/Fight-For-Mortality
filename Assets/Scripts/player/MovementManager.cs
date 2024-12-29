@@ -1,13 +1,15 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class NodeMovementManager : MonoBehaviour
 {
-    [SerializeField] 
+    [SerializeField]
     List<Transform> nodes;
     [SerializeField]
-    Transform player; 
-    private int currentNodeIndex = 0; 
+    Transform player;
+    [SerializeField]
+    float offsetY = 1.0f; 
+    private int currentNodeIndex = 0;
 
     void Start()
     {
@@ -42,6 +44,8 @@ public class NodeMovementManager : MonoBehaviour
 
     void MovePlayerToNode(int nodeIndex)
     {
-        player.position = nodes[nodeIndex].position;
+        Vector3 targetPosition = nodes[nodeIndex].position;
+        targetPosition.y += offsetY; 
+        player.position = targetPosition;
     }
 }

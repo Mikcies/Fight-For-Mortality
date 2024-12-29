@@ -1,14 +1,18 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using TMPro; // Pokud používáte TextMeshPro
+using TMPro;
+using UnityEngine.UI; 
 
 public class NodeManagment : MonoBehaviour
 {
     [SerializeField]
     private string sceneName;
     [SerializeField]
-    private TMP_Text interactionText; 
+    private TMP_Text interactionText;
+    [SerializeField]
+    private Image image;
 
+    
     private bool isPlayerHere = false;
 
     void Start()
@@ -17,26 +21,24 @@ public class NodeManagment : MonoBehaviour
         {
             interactionText.gameObject.SetActive(false); 
         }
+        image.enabled = false;
     }
 
     void Update()
     {
         if (isPlayerHere && Input.GetKeyDown(KeyCode.E))
         {
-            LoadScene();
         }
     }
 
-    private void LoadScene()
-    {
-        SceneManager.LoadScene(sceneName);
-    }
+    
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
             isPlayerHere = true;
+            image.enabled = true;
             HighlightNode(true);
             interactionText.text = $"Press 'E' to enter {sceneName}";
             interactionText.gameObject.SetActive(true);
@@ -49,7 +51,7 @@ public class NodeManagment : MonoBehaviour
         {
             isPlayerHere = false;
             HighlightNode(false);
-
+            image.enabled = false;
             if (interactionText != null)
             {
                 interactionText.gameObject.SetActive(false);
