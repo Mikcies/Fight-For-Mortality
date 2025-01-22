@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class FlyingBoss : BossBase
 {
-    //public GameObject fireballPrefab;
-    //public GameObject flameWavePrefab;
+    [SerializeField]
+    Sprite deadOnGround;
 
     [Header("Tornado Settings")]
     [SerializeField]
@@ -37,15 +37,17 @@ public class FlyingBoss : BossBase
     float spawnAreaWidth = 15f;
     [SerializeField]
     float spawnHeight = 10f;
+    [SerializeField]
+    Transform spawnPoint;
 
-    [Header("Charge Attack Settings")]
+    [Header("Movement Settings")]
     [SerializeField]
-    Transform target;
+    Transform pointA;
     [SerializeField]
-    float chargeDuration = 1f;
+    Transform pointB;
     [SerializeField]
-    float chargeSpeed = 10f;
-    private bool isCharging = false;
+    float movementSpeed = 5f;
+    private bool movingToPointB = true;
 
 
 
@@ -54,12 +56,14 @@ public class FlyingBoss : BossBase
         phase1Attacks.Add(FeatherFall);
         phase1Attacks.Add(HomingProjectile);
         phase1Attacks.Add(Tornado);
+        phase1Attacks.Add(MoveBetweenPoints);
 
-
-        phase2Attacks.Add(ChargeAttack);
+        phase2Attacks.Add(FeatherFall);
+        phase2Attacks.Add(HomingProjectile);
+        phase2Attacks.Add(Tornado);
+        phase2Attacks.Add(MoveBetweenPoints);
+        phase2Attacks.Add(FeatherFall2phase);
     }
-
-
 
     private void ChargeAttack()
     {
@@ -98,19 +102,70 @@ public class FlyingBoss : BossBase
     }
     private void FeatherFall()
     {
-        Debug.Log("Called FeatherFall");
-        if (featherPrefab == null)
+        if (featherPrefab == null || spawnPoint == null)
         {
             return;
         }
 
         for (int i = 0; i < feathersPerWave; i++)
         {
+            float randomX = Random.Range(spawnPoint.position.x - spawnAreaWidth / 2f, spawnPoint.position.x + spawnAreaWidth / 2f);
+            Vector3 spawnPosition = new Vector3(randomX, spawnPoint.position.y, 0f); // Y zůstává stejný
+
+            Quaternion rotation = Quaternion.Euler(0, 0, 180);
+
+            GameObject feather = Instantiate(featherPrefab, spawnPosition, rotation);
+        }
+    }
+
+    private void FeatherFall2phase()
+    {
+        int Feather = Random.Range(10, 15);
+        if (featherPrefab == null)
+        {
+            return;
+        }
+        for (int i = 0; i < Feather; i++)
+        {
             float randomX = Random.Range(-spawnAreaWidth / 2f, spawnAreaWidth / 2f);
             Vector3 spawnPosition = new Vector3(randomX, spawnHeight, 0f);
 
             GameObject feather = Instantiate(featherPrefab, spawnPosition, Quaternion.identity);
+        }
+    }
+    private void MoveBetweenPoints()
+    {
+        Transform targetPoint = movingToPointB ? pointB : pointA;
+        if (targetPoint == null || pointA == null || pointB == null)
+        {
+            return;
+        }
 
+        StartCoroutine(MoveToTarget(targetPoint));
+
+        movingToPointB = !movingToPointB;
+    }
+
+    private IEnumerator MoveToTarget(Transform target)
+    {
+        while (Vector2.Distance(transform.position, target.position) > 0.1f)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, target.position, movementSpeed * Time.deltaTime);
+            yield return null;
+        }
+    }
+    protected override void HandleDeath()
+    {
+        base.HandleDeath();
+        rb.gravityScale = 1;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Floor") && isDead)
+        {
+            spriteRenderer.sprite = deadOnGround;
+            animator.enabled = false;
         }
     }
 }

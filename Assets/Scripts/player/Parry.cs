@@ -6,7 +6,7 @@ public class Parry : MonoBehaviour
     [SerializeField] GameObject shield;
     [SerializeField] float shieldDuration = 0.2f;
     [SerializeField] float cooldownDuration = 2.0f;
-    [SerializeField] float punishDuration = 2f; 
+    [SerializeField] float punishDuration = 1.5f; 
     [SerializeField] GameObject playerBullet;
     [SerializeField] Transform bulletSpawnPoint;
 
@@ -68,7 +68,6 @@ public class Parry : MonoBehaviour
 
     private void ApplyPunish()
     {
-        Debug.Log("Parry netrefeno! Aplikace penalizace.");
         playerMovement.Walkspeed = 2f; 
         Invoke("RestoreMovement", punishDuration); 
     }
@@ -77,7 +76,6 @@ public class Parry : MonoBehaviour
     {
         playerMovement.Walkspeed = 5f; 
     }
-
     public void SuccessfulParry()
     {
         missedParry = false; 

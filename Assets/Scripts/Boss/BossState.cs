@@ -13,33 +13,41 @@ public abstract class BossBase : MonoBehaviour
         Death
     }
 
-    [SerializeField] 
+    [SerializeField]
+    protected Animator animator;
+    [SerializeField]
     protected BossState currentState = BossState.Idle;
     [SerializeField]
     protected float maxHealth = 100f;
     [SerializeField]
     protected float currentHealth;
 
-    SpriteRenderer spriteRenderer;
-    float flashDuration = 0.1f;
-
-    protected float attackCooldown = 2f;
-    private float lastAttackTime; 
-
+    protected SpriteRenderer spriteRenderer;
     protected Rigidbody2D rb;
+
+    protected bool isDead = false; 
+    private float flashDuration = 0.1f;
+
+    protected float attackCooldown = 3.5f;
+    private float lastAttackTime;
+
     protected List<System.Action> phase1Attacks = new List<System.Action>();
     protected List<System.Action> phase2Attacks = new List<System.Action>();
+
+    protected bool idleTimerStarted = false;
 
     protected virtual void Start()
     {
         currentHealth = maxHealth;
         rb = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         InitializeAttacks();
     }
 
     protected virtual void Update()
     {
+        if (isDead) return;
+
         switch (currentState)
         {
             case BossState.Idle:
@@ -66,8 +74,19 @@ public abstract class BossBase : MonoBehaviour
 
     protected virtual void HandleIdleState()
     {
+        if (!idleTimerStarted)
+        {
+            idleTimerStarted = true;
+            Invoke("TransitionToPhase1", 1f); 
+        }
     }
-
+    protected void TransitionToPhase1()
+    {
+        if (currentState == BossState.Idle)
+        {
+            currentState = BossState.AttackPhase1;
+        }
+    }
     protected virtual void HandleAttackPhase1()
     {
         ExecuteRandomAttack(phase1Attacks);
@@ -93,11 +112,17 @@ public abstract class BossBase : MonoBehaviour
 
     protected virtual void HandleDeath()
     {
-        Destroy(gameObject);
+        if (isDead) return; 
+
+        isDead = true; 
+        rb.gravityScale = 1; 
+        animator.SetTrigger("Death"); 
     }
 
     internal void TakeDamage(int damage)
     {
+        if (isDead) return; 
+
         currentHealth -= damage;
         StartCoroutine(FlashRed());
         if (currentHealth <= 0)
@@ -122,7 +147,6 @@ public abstract class BossBase : MonoBehaviour
             lastAttackTime = Time.time;
         }
     }
-
 
     protected virtual void InitializeAttacks()
     {

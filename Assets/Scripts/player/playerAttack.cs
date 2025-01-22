@@ -4,61 +4,71 @@ using UnityEngine;
 
 public class PlayerMeleeAttack : MonoBehaviour
 {
-    [SerializeField]    
-    float attackRange = 0.5f;
     [SerializeField]
-    int attackDamage = 20;
+    private float attackRange = 0.5f;
     [SerializeField]
-    Transform attackPoint;
+    private int attackDamage = 20;
     [SerializeField]
-    LayerMask enemyLayers;
+    private Transform attackPoint;
     [SerializeField]
-    float attackRate = 2f;
+    private LayerMask enemyLayers;
     [SerializeField]
-    float nextAttackTime = 0f;
+    private float attackRate = 0.5f;
+    private float nextAttackTime = 0f;
 
     [SerializeField]
-    Animator animator;
-    Parry parry;
+    private Animator animator;
+    private Parry parry;
 
-    void Update()
+    private bool isAttacking = false;
+
+    private void Start()
     {
         parry = GetComponent<Parry>();
-
-        if (Time.time >= nextAttackTime && !parry.isParrying)
+    }
+    void Update()
+    {
+        if (Time.time >= nextAttackTime && !isAttacking && !parry.isParrying)
         {
             if (Input.GetKeyDown(KeyCode.Mouse1))
             {
-                meleeAttack();
-                nextAttackTime = Time.time + 1f / attackRate;
+                MeleeAttack();
             }
         }
     }
 
-    void meleeAttack()
+    void MeleeAttack()
     {
+        if (isAttacking) return;  
+
+        isAttacking = true;
         animator.SetBool("Attack", true);
-        Debug.Log("Attack");
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
-        foreach (Collider2D enemy in hitEnemies)
+        Collider2D hitEnemy = Physics2D.OverlapCircle(attackPoint.position, attackRange, enemyLayers);
+        if (hitEnemy != null)
         {
-            enemy.GetComponent<BossBase>().TakeDamage(attackDamage);
-            Debug.Log("We hit " + enemy.name);
+            BossBase enemyBoss = hitEnemy.GetComponent<BossBase>();
+            if (enemyBoss != null)
+            {
+                enemyBoss.TakeDamage(attackDamage);
+            }
         }
+        nextAttackTime = Time.time + 1 / attackRate;
         StartCoroutine(ResetAttackAnimation());
     }
+
     IEnumerator ResetAttackAnimation()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.25f);
         animator.SetBool("Attack", false);
+        isAttacking = false;  
     }
 
-
-private void OnDrawGizmosSelected()
+    private void OnDrawGizmosSelected()
     {
         if (attackPoint == null)
             return;
 
+        Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 }
