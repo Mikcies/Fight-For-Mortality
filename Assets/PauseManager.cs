@@ -4,6 +4,8 @@ public class PauseController : MonoBehaviour
 {
     [SerializeField]
     private GameObject PauseMenu;
+    [SerializeField]
+    Animator anim;
 
     private bool isPaused = false;
 
@@ -25,6 +27,8 @@ public class PauseController : MonoBehaviour
     private void PauseGame()
     {
         Time.timeScale = 0;
+        anim.speed = 0;
+        anim.enabled = false;
         PauseMenu.SetActive(true);
         isPaused = true;
     }
@@ -32,6 +36,7 @@ public class PauseController : MonoBehaviour
     private void ResumeGame()
     {
         Time.timeScale = 1;
+        anim.enabled = true;
         PauseMenu.SetActive(false);
         isPaused = false;
     }

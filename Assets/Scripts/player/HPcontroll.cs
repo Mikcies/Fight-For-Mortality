@@ -9,7 +9,8 @@ public class HPcontroll : MonoBehaviour
     [SerializeField]
     Animator Animator;
     internal int currentHealth;
-
+    [SerializeField]
+    GameObject loseCanvas;
 
     void Start()
     {
@@ -42,6 +43,7 @@ public class HPcontroll : MonoBehaviour
         yield return new WaitForSeconds(animationLength);
 
         Time.timeScale = 0;
+        loseCanvas.SetActive(true);
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

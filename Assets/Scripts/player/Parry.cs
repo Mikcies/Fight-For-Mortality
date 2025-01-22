@@ -11,10 +11,13 @@ public class Parry : MonoBehaviour
     [SerializeField] Transform bulletSpawnPoint;
 
     internal bool isParrying = false;
+    internal int Used;
+    internal int punished;
     bool missedParry = false; 
     float parryTimer = 0f;
     float cooldownTimer = 0f;
     private playerMove playerMovement;
+
 
     void Start()
     {
@@ -57,6 +60,7 @@ public class Parry : MonoBehaviour
         playerMovement.canMove = false; 
         parryTimer = shieldDuration;
         cooldownTimer = cooldownDuration;
+        Used++;
     }
 
     private void DeactivateParry()
@@ -68,7 +72,8 @@ public class Parry : MonoBehaviour
 
     private void ApplyPunish()
     {
-        playerMovement.Walkspeed = 2f; 
+        playerMovement.Walkspeed = 2f;
+        punished++;
         Invoke("RestoreMovement", punishDuration); 
     }
 

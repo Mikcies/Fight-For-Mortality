@@ -18,6 +18,8 @@ public class rangedAttack : MonoBehaviour
     }
     void Update()
     {
+        if (Time.timeScale == 0)
+            return;
         if (!parry.isParrying)
         {
             if(Input.GetKeyDown(KeyCode.Mouse0)) 

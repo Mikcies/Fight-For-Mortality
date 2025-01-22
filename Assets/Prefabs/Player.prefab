@@ -359,6 +359,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   animator: {fileID: 5366989480555072807}
+  winCanvas: {fileID: 0}
+  Hpcounter: {fileID: 0}
 --- !u!50 &3542098690399834668
 Rigidbody2D:
   serializedVersion: 5

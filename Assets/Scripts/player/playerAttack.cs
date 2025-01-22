@@ -28,6 +28,10 @@ public class PlayerMeleeAttack : MonoBehaviour
     }
     void Update()
     {
+        if(Time.timeScale == 0)
+        {
+            return;
+        }
         if (Time.time >= nextAttackTime && !isAttacking && !parry.isParrying)
         {
             if (Input.GetKeyDown(KeyCode.Mouse1))

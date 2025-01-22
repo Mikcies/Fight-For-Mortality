@@ -39,6 +39,14 @@ public class playerMove : MonoBehaviour
 
     void Update()
     {
+        if (Time.timeScale == 0)
+        {
+            rb.linearVelocity = Vector2.zero; 
+            animator.enabled = false;
+            return;
+        }
+
+        animator.enabled = true;
         if (canMove) 
         {
             Move();
