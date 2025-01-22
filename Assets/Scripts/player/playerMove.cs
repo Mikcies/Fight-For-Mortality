@@ -24,7 +24,12 @@ public class playerMove : MonoBehaviour
     Animator animator;
     private bool isGrounded = false;
 
-    internal bool canMove = true; 
+    internal bool canMove = true;
+
+    [SerializeField]
+    GameObject winCanvas;
+    [SerializeField]
+    GameObject Hpcounter;
 
     void Start()
     {
@@ -110,5 +115,15 @@ public class playerMove : MonoBehaviour
         rb.linearVelocity = new Vector2(xMove, yMove);
         rb.constraints = RigidbodyConstraints2D.FreezeRotation; 
 
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Organ"))
+        {
+            winCanvas.SetActive(true);
+            Hpcounter.SetActive(false);
+            Destroy(collision.gameObject);
+            Time.timeScale = 0;
+        }
     }
 }

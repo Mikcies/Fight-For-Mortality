@@ -7,6 +7,10 @@ public class FlyingBoss : BossBase
     [SerializeField]
     Sprite deadOnGround;
 
+    [SerializeField]
+    GameObject heartObject;
+    [SerializeField]
+    Transform heartSpawnPoint;
     [Header("Tornado Settings")]
     [SerializeField]
     float tornadoForce;
@@ -204,7 +208,6 @@ public class FlyingBoss : BossBase
     protected override void HandleDeath()
     {
         base.HandleDeath();
-        rb.gravityScale = 1;
     }
     private IEnumerator EndAttackAfterTime(float time)
     {
@@ -217,6 +220,7 @@ public class FlyingBoss : BossBase
         {
             spriteRenderer.sprite = deadOnGround;
             animator.enabled = false;
+            Instantiate(heartObject, heartSpawnPoint);
         }
     }
 }

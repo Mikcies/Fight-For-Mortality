@@ -47,7 +47,6 @@ public abstract class BossBase : MonoBehaviour
     protected virtual void Update()
     {
         if (isDead) return;
-        Debug.Log(isAttacking);
         switch (currentState)
         {
             case BossState.Idle:
@@ -112,9 +111,8 @@ public abstract class BossBase : MonoBehaviour
 
     protected virtual void HandleDeath()
     {
-        if (isDead) return; 
-
-        isDead = true; 
+        isDead = true;
+        Debug.Log(isDead);
         rb.gravityScale = 1; 
         animator.SetTrigger("Death"); 
     }
