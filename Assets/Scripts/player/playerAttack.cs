@@ -13,7 +13,7 @@ public class PlayerMeleeAttack : MonoBehaviour
     [SerializeField]
     private LayerMask enemyLayers;
     [SerializeField]
-    private float attackRate = 0.5f;
+    private float attackRate = 1f;
     private float nextAttackTime = 0f;
 
     [SerializeField]
@@ -43,6 +43,7 @@ public class PlayerMeleeAttack : MonoBehaviour
 
         isAttacking = true;
         animator.SetBool("Attack", true);
+        animator.speed = 0.5f;  
         Collider2D hitEnemy = Physics2D.OverlapCircle(attackPoint.position, attackRange, enemyLayers);
         if (hitEnemy != null)
         {

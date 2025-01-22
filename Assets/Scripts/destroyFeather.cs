@@ -15,7 +15,7 @@ public class destroyFeather : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Floor")
+        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Floor"))
         {
             Destroy(gameObject);
         }

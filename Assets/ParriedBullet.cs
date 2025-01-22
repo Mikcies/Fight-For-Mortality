@@ -12,7 +12,7 @@ public class ParriedBullet : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
 
-        rb.velocity = transform.right * bulletSpeed; 
+        rb.linearVelocity = transform.right * bulletSpeed; 
     }
     
     private void OnTriggerEnter2D(Collider2D collision)

@@ -40,7 +40,7 @@ public class playerMove : MonoBehaviour
         }
         else
         {
-            rb.velocity = Vector2.zero;
+            rb.linearVelocity = Vector2.zero;
             rb.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
         }
     }
@@ -50,7 +50,7 @@ public class playerMove : MonoBehaviour
         isGrounded = (Physics2D.Raycast(Ray.position, Vector2.down, 0.5f, floorLayerMask).collider != null);
 
         float xMove = 0;
-        float yMove = rb.velocity.y;
+        float yMove = rb.linearVelocity.y;
 
         if (Input.GetKey(KeyCode.D))
         {
@@ -107,7 +107,7 @@ public class playerMove : MonoBehaviour
             transform.localScale = new Vector3(-1f, 1f, 1f);
         }
 
-        rb.velocity = new Vector2(xMove, yMove);
+        rb.linearVelocity = new Vector2(xMove, yMove);
         rb.constraints = RigidbodyConstraints2D.FreezeRotation; 
 
     }

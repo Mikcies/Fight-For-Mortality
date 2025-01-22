@@ -28,14 +28,14 @@ public abstract class BossBase : MonoBehaviour
     protected bool isDead = false; 
     private float flashDuration = 0.1f;
 
-    protected float attackCooldown = 3.5f;
+    protected float attackCooldown = 4.5f;
     private float lastAttackTime;
 
     protected List<System.Action> phase1Attacks = new List<System.Action>();
     protected List<System.Action> phase2Attacks = new List<System.Action>();
 
     protected bool idleTimerStarted = false;
-
+    protected bool isAttacking = false;
     protected virtual void Start()
     {
         currentHealth = maxHealth;
@@ -47,7 +47,7 @@ public abstract class BossBase : MonoBehaviour
     protected virtual void Update()
     {
         if (isDead) return;
-
+        Debug.Log(isAttacking);
         switch (currentState)
         {
             case BossState.Idle:
@@ -140,6 +140,7 @@ public abstract class BossBase : MonoBehaviour
 
     protected void ExecuteRandomAttack(List<System.Action> attackList)
     {
+        if(isAttacking) return;
         if (attackList.Count > 0 && Time.time >= lastAttackTime + attackCooldown)
         {
             int randomIndex = Random.Range(0, attackList.Count);

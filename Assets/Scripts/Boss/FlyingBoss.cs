@@ -39,6 +39,11 @@ public class FlyingBoss : BossBase
     float spawnHeight = 10f;
     [SerializeField]
     Transform spawnPoint;
+    [SerializeField]
+    Transform targetPosition;
+    [SerializeField]
+    float moveSpeed = 5f;
+    Vector2 originalPosition;
 
     [Header("Movement Settings")]
     [SerializeField]
@@ -53,7 +58,7 @@ public class FlyingBoss : BossBase
 
     protected override void InitializeAttacks()
     {
-        phase1Attacks.Add(FeatherFall);
+        phase1Attacks.Add(Fall);
         phase1Attacks.Add(HomingProjectile);
         phase1Attacks.Add(Tornado);
         phase1Attacks.Add(MoveBetweenPoints);
@@ -64,13 +69,17 @@ public class FlyingBoss : BossBase
         phase2Attacks.Add(MoveBetweenPoints);
         phase2Attacks.Add(FeatherFall2phase);
     }
-
+    private void Start()
+    {
+        base.Start();
+        originalPosition = transform.position;
+    }
     private void ChargeAttack()
     {
     }
     private void HomingProjectile()
     {
-
+        isAttacking = true;
         if (firePoint == null || projectilePrefab == null)
         {
             return;
@@ -89,9 +98,11 @@ public class FlyingBoss : BossBase
                 }
             }
         }
+        StartCoroutine(EndAttackAfterTime(1.5f));
     }
     private void Tornado()
     {
+        isAttacking = true;
         GameObject tornado = Instantiate(tornadoPrefab, shootPoint.position, shootPoint.rotation);
 
         Rigidbody2D rb = tornado.GetComponent<Rigidbody2D>();
@@ -99,24 +110,60 @@ public class FlyingBoss : BossBase
         {
             rb.AddForce(-shootPoint.right * tornadoForce, ForceMode2D.Impulse);
         }
+        StartCoroutine(EndAttackAfterTime(1.5f));
     }
     private void FeatherFall()
     {
-        if (featherPrefab == null || spawnPoint == null)
-        {
-            return;
-        }
-
+        isAttacking = true;
         for (int i = 0; i < feathersPerWave; i++)
         {
             float randomX = Random.Range(spawnPoint.position.x - spawnAreaWidth / 2f, spawnPoint.position.x + spawnAreaWidth / 2f);
-            Vector3 spawnPosition = new Vector3(randomX, spawnPoint.position.y, 0f); // Y zůstává stejný
+            Vector3 spawnPosition = new Vector3(randomX, spawnPoint.position.y, 0f);
 
             Quaternion rotation = Quaternion.Euler(0, 0, 180);
 
             GameObject feather = Instantiate(featherPrefab, spawnPosition, rotation);
         }
+        StartCoroutine(EndAttackAfterTime(1.5f));
     }
+    private void Fall()
+    {
+        if (targetPosition == null)
+        {
+            return;
+        }
+        StartCoroutine(Falle());
+    }
+
+    private IEnumerator Falle()
+    {
+        while (Vector3.Distance(transform.position, targetPosition.position) > 0.1f)
+        {
+            Vector3 direction = (targetPosition.position - transform.position).normalized;
+            transform.position += direction * moveSpeed * Time.deltaTime;
+            yield return null; 
+        }
+
+        transform.position = targetPosition.position;
+        if (transform.position == targetPosition.position)
+        {
+            FeatherFall();
+            yield return StartCoroutine(ReturnToOriginalPosition()); 
+        }
+    }
+
+    private IEnumerator ReturnToOriginalPosition()
+    {
+        while (Vector2.Distance(transform.position, originalPosition) > 0.1f)
+        {
+            Vector2 direction = (originalPosition - (Vector2)transform.position).normalized;
+            transform.position = (Vector2)transform.position + direction * moveSpeed * Time.deltaTime;
+            yield return null; 
+        }
+
+        transform.position = originalPosition;
+    }
+
 
     private void FeatherFall2phase()
     {
@@ -159,7 +206,11 @@ public class FlyingBoss : BossBase
         base.HandleDeath();
         rb.gravityScale = 1;
     }
-
+    private IEnumerator EndAttackAfterTime(float time)
+    {
+        yield return new WaitForSeconds(time);
+        isAttacking = false;
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Floor") && isDead)

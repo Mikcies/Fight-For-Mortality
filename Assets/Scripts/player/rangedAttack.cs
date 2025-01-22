@@ -35,11 +35,11 @@ public class rangedAttack : MonoBehaviour
 
         if (playerTransform.localScale.x < 0)
         {
-            rb.velocity = -firePoint.right * projectileSpeed;
+            rb.linearVelocity = -firePoint.right * projectileSpeed;
         }
         else
         {
-            rb.velocity = firePoint.right * projectileSpeed;
+            rb.linearVelocity = firePoint.right * projectileSpeed;
         }
 
     }

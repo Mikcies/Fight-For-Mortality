@@ -12,7 +12,7 @@ public class EnemyBullet : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = transform.up * speed; 
+        rb.linearVelocity = transform.up * speed; 
         Destroy(gameObject, lifetime); 
     }
 
