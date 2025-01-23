@@ -29,6 +29,7 @@ public abstract class BossBase : MonoBehaviour
     private float flashDuration = 0.1f;
 
     protected float attackCooldown = 4.5f;
+    protected float phase2AttackCooldown = 2f;
     private float lastAttackTime;
 
     protected List<System.Action> phase1Attacks = new List<System.Action>();
@@ -36,6 +37,8 @@ public abstract class BossBase : MonoBehaviour
 
     protected bool idleTimerStarted = false;
     protected bool isAttacking = false;
+    protected float timeAlive = 0f;
+    internal float finalTimeAlive = 0f;
     protected virtual void Start()
     {
         currentHealth = maxHealth;
@@ -46,6 +49,7 @@ public abstract class BossBase : MonoBehaviour
 
     protected virtual void Update()
     {
+        timeAlive += Time.deltaTime;
         if (isDead) return;
         switch (currentState)
         {
@@ -106,13 +110,15 @@ public abstract class BossBase : MonoBehaviour
 
     protected virtual void HandleTransitionToPhase2()
     {
+        attackCooldown = phase2AttackCooldown;
         currentState = BossState.AttackPhase2;
+
     }
 
     protected virtual void HandleDeath()
     {
+        finalTimeAlive = Mathf.FloorToInt(timeAlive);
         isDead = true;
-        Debug.Log(isDead);
         rb.gravityScale = 1; 
         animator.SetTrigger("Death"); 
     }

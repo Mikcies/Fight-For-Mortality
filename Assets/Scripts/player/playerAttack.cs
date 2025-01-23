@@ -47,7 +47,7 @@ public class PlayerMeleeAttack : MonoBehaviour
 
         isAttacking = true;
         animator.SetBool("Attack", true);
-        animator.speed = 0.5f;  
+        animator.speed = 1f;  
         Collider2D hitEnemy = Physics2D.OverlapCircle(attackPoint.position, attackRange, enemyLayers);
         if (hitEnemy != null)
         {

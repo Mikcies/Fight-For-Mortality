@@ -6,6 +6,8 @@ public class ButtonControl : MonoBehaviour
     public void ReturnToMap()
     {
         SceneManager.LoadScene("WorldMap");
+        Time.timeScale = 1;
+
     }
     public void RestartLevel()
     {

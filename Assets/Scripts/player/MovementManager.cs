@@ -13,6 +13,7 @@ public class NodeMovementManager : MonoBehaviour
 
     void Start()
     {
+        currentNodeIndex = PlayerPrefs.GetInt("CurrentNodeIndex", 0);
         MovePlayerToNode(currentNodeIndex);
     }
 

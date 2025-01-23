@@ -5,9 +5,6 @@ using UnityEngine;
 public class FlyingBoss : BossBase
 {
     [SerializeField]
-    Sprite deadOnGround;
-
-    [SerializeField]
     GameObject heartObject;
     [SerializeField]
     Transform heartSpawnPoint;
@@ -95,7 +92,7 @@ public class FlyingBoss : BossBase
 
             if (projectile != null)
             {
-                homingFeather homingScript = projectile.GetComponent<homingFeather>();
+                homingBall homingScript = projectile.GetComponent<homingBall>();
                 if (homingScript != null)
                 {
                     homingScript.InitializeTarget(); 
@@ -218,7 +215,6 @@ public class FlyingBoss : BossBase
     {
         if (collision.gameObject.CompareTag("Floor") && isDead)
         {
-            spriteRenderer.sprite = deadOnGround;
             animator.enabled = false;
             Instantiate(heartObject, heartSpawnPoint);
         }

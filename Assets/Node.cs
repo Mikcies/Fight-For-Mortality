@@ -10,9 +10,10 @@ public class NodeManagment : MonoBehaviour
     [SerializeField]
     private TMP_Text interactionText;
     [SerializeField]
-    private Image image;
+    private int nodeIndex;
 
-    
+
+
     private bool isPlayerHere = false;
 
     void Start()
@@ -21,13 +22,16 @@ public class NodeManagment : MonoBehaviour
         {
             interactionText.gameObject.SetActive(false); 
         }
-        image.enabled = false;
+       
     }
 
     void Update()
     {
         if (isPlayerHere && Input.GetKeyDown(KeyCode.E))
         {
+            PlayerPrefs.SetInt("CurrentNodeIndex", nodeIndex);
+            PlayerPrefs.Save();
+            SceneManager.LoadScene(sceneName);
         }
     }
 
@@ -38,8 +42,6 @@ public class NodeManagment : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             isPlayerHere = true;
-            image.enabled = true;
-            HighlightNode(true);
             interactionText.text = $"Press 'E' to enter {sceneName}";
             interactionText.gameObject.SetActive(true);
         }
@@ -50,8 +52,6 @@ public class NodeManagment : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             isPlayerHere = false;
-            HighlightNode(false);
-            image.enabled = false;
             if (interactionText != null)
             {
                 interactionText.gameObject.SetActive(false);
@@ -59,16 +59,5 @@ public class NodeManagment : MonoBehaviour
         }
     }
 
-    void HighlightNode(bool highlight)
-    {
-        SpriteRenderer sr = GetComponent<SpriteRenderer>();
-        if (sr != null)
-        {
-            sr.color = highlight ? Color.yellow : Color.white;
-        }
-        else
-        {
-            Debug.LogError("SpriteRenderer is missing.");
-        }
-    }
+   
 }

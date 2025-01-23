@@ -12,15 +12,20 @@ public class MessaggeEditor : MonoBehaviour
     Parry parrycount;
     [SerializeField]
     HPcontroll playerHealth;
+    [SerializeField]
+    TMP_Text time;
+    [SerializeField]
+    BossBase BossBase;
     void Start()
     {
         
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         parry.text = "Sucessful Parry: " + parrycount.punished +"/" + parrycount.Used;
         HPleft.text = "HP left: " + playerHealth.currentHealth;
+        time.text = "Duration of the fight: " + BossBase.finalTimeAlive;
     }
 }

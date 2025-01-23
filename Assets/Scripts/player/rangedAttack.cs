@@ -32,18 +32,18 @@ public class rangedAttack : MonoBehaviour
     void Shoot()
     {
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
-
         Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
 
         if (playerTransform.localScale.x < 0)
         {
             rb.linearVelocity = -firePoint.right * projectileSpeed;
+            projectile.transform.localScale = new Vector3(-0.15f, 0.15f, 0.15f); 
         }
         else
         {
             rb.linearVelocity = firePoint.right * projectileSpeed;
+            projectile.transform.localScale = new Vector3(0.15f, 0.15f, 0.15f); 
         }
-
     }
 
 }

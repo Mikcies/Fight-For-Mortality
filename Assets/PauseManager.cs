@@ -27,7 +27,6 @@ public class PauseController : MonoBehaviour
     private void PauseGame()
     {
         Time.timeScale = 0;
-        anim.speed = 0;
         anim.enabled = false;
         PauseMenu.SetActive(true);
         isPaused = true;
