@@ -8,6 +8,10 @@ public class rangedAttack : MonoBehaviour
     Transform firePoint;
     [SerializeField]
     float projectileSpeed = 10f;
+    [SerializeField]
+    float shootCooldown = 0.25f;
+
+    private float lastShootTime;
 
     private Transform playerTransform;
     Parry parry;
@@ -22,9 +26,10 @@ public class rangedAttack : MonoBehaviour
             return;
         if (!parry.isParrying)
         {
-            if(Input.GetKeyDown(KeyCode.Mouse0)) 
+            if (Input.GetKeyDown(KeyCode.Mouse0) && Time.time >= lastShootTime + shootCooldown)
             {
-            Shoot();
+                Shoot();
+                lastShootTime = Time.time; 
             }
         }
     }

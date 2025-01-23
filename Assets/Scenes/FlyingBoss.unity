@@ -2767,6 +2767,10 @@ PrefabInstance:
       propertyPath: winCanvas
       value: 
       objectReference: {fileID: 987938838}
+    - target: {fileID: 2340976028976852699, guid: 946efd99b812890478834163e8b24b69, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7285214250379283235, guid: d1861c567e83c204581ba97f2547b1a9, type: 3}
     - target: {fileID: 3487378094117177714, guid: 946efd99b812890478834163e8b24b69, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.93
@@ -2815,11 +2819,97 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 6475335043912012652, guid: 946efd99b812890478834163e8b24b69, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8945115215000194003, guid: 946efd99b812890478834163e8b24b69, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8945115215000194003, guid: 946efd99b812890478834163e8b24b69, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.8799999
+      objectReference: {fileID: 0}
+    - target: {fileID: 8945115215000194003, guid: 946efd99b812890478834163e8b24b69, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8945115215000194003, guid: 946efd99b812890478834163e8b24b69, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8945115215000194003, guid: 946efd99b812890478834163e8b24b69, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8945115215000194003, guid: 946efd99b812890478834163e8b24b69, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8945115215000194003, guid: 946efd99b812890478834163e8b24b69, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 9074101392680893086, guid: 946efd99b812890478834163e8b24b69, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 6.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 9074101392680893086, guid: 946efd99b812890478834163e8b24b69, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 10.75
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9074101392680893086, guid: 946efd99b812890478834163e8b24b69, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6475335043912012652, guid: 946efd99b812890478834163e8b24b69, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 939381183}
   m_SourcePrefab: {fileID: 100100000, guid: 946efd99b812890478834163e8b24b69, type: 3}
+--- !u!1 &939381182 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6475335043912012652, guid: 946efd99b812890478834163e8b24b69, type: 3}
+  m_PrefabInstance: {fileID: 939381181}
+  m_PrefabAsset: {fileID: 0}
+--- !u!70 &939381183
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 939381182}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -0.00000059604645, y: 0}
+  m_Size: {x: 6.68, y: 10.75}
+  m_Direction: 0
 --- !u!1 &951157028
 GameObject:
   m_ObjectHideFlags: 0
