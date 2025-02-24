@@ -47,14 +47,28 @@ public class HPcontroll : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "EnemyBullet" || collision.gameObject.tag == "enemy" )
+        if (collision.gameObject.tag == "EnemyBullet")
+        {
+
+            if (currentHealth > 0)
+            {
+                currentHealth--;
+                Destroy(collision.gameObject);
+                Animator.Play("Hurt");
+            }
+            if(currentHealth == 0)
+            {
+                HandleDeath();
+            }
+        }
+        if(collision.gameObject.tag == "enemy")
         {
             if (currentHealth > 0)
             {
                 currentHealth--;
                 Animator.Play("Hurt");
             }
-            if(currentHealth == 0)
+            if (currentHealth == 0)
             {
                 HandleDeath();
             }

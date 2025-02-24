@@ -23,6 +23,7 @@ public class ShowText : MonoBehaviour
     {
         if(collision == collision.CompareTag("Player"))
         {
+            Debug.Log("Player entered");
             canvas.enabled = true;
             text.text = messageToShow;
         }

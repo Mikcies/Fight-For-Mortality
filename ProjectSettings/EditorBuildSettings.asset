@@ -17,5 +17,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FlyingBoss.unity
     guid: 57db9a356a15e004b83df779a01cbf2d
+  - enabled: 1
+    path: Assets/Scenes/SwordsmanBoss.unity
+    guid: 6ad18f4b716611a47800a4d714b84aa1
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

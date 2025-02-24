@@ -12,7 +12,7 @@ public abstract class BossBase : MonoBehaviour
         AttackPhase2,
         Death
     }
-
+    protected Collider2D collider;
     [SerializeField]
     protected Animator animator;
     [SerializeField]
@@ -20,7 +20,7 @@ public abstract class BossBase : MonoBehaviour
     [SerializeField]
     protected float maxHealth = 100f;
     [SerializeField]
-    protected float currentHealth;
+    internal float currentHealth;
 
     protected SpriteRenderer spriteRenderer;
     protected Rigidbody2D rb;
@@ -43,6 +43,7 @@ public abstract class BossBase : MonoBehaviour
     {
         currentHealth = maxHealth;
         rb = GetComponent<Rigidbody2D>();
+        collider = GetComponent<Collider2D>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         InitializeAttacks();
     }
@@ -126,7 +127,8 @@ public abstract class BossBase : MonoBehaviour
     internal void TakeDamage(int damage)
     {
         if (isDead) return; 
-
+        Debug.Log("Boss took damage: " + damage);
+        Debug.Log("Current health: " + currentHealth);
         currentHealth -= damage;
         StartCoroutine(FlashRed());
         if (currentHealth <= 0)
