@@ -16,6 +16,16 @@ public class Swordsman : BossBase
     [Header("Jump")]
     [SerializeField]
     float jumpForce;
+
+    [Header("Shockwave")]
+    [SerializeField]
+    GameObject shockwavePrefab;
+    [SerializeField]
+    Transform shootPoint;
+    [SerializeField]
+    float shockwaveSpeed = 5f;
+    [SerializeField]
+
     void Start()
     {
         base.Start();
@@ -28,7 +38,8 @@ public class Swordsman : BossBase
 
     protected override void InitializeAttacks()
     {
-        //phase1Attacks.Add(Charge);
+        phase1Attacks.Add(Shockwave);
+        phase1Attacks.Add(Charge);
         phase1Attacks.Add(FallDown);
         phase1Attacks.Add(Jump);
         phase2Attacks.Add(FallDown);
@@ -63,7 +74,11 @@ public class Swordsman : BossBase
     private void Charge()
     {
         animator.SetBool("Charge", true);
-        spriteRenderer.flipX = direction < 0;
+        if (direction < 0)
+            transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        else
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+
         StartCoroutine(ChargeRoutine());
     }
     private IEnumerator ChargeRoutine()
@@ -76,11 +91,27 @@ public class Swordsman : BossBase
         }
         animator.SetBool("Charge", false);
     }
+
     private void Jump()
     {
-            Debug.Log("Boss skáče!");
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f); // Reset vertikální rychlosti
-            rb.linearVelocity += new Vector2(0f, jumpForce); // Aplikace skoku
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f); 
+            rb.linearVelocity += new Vector2(0f, jumpForce); 
+    }
+    private void Shockwave()
+    {
+        animator.SetBool("Attack", true);
+        StartCoroutine(ShockwaveRoutine());
+    }
+    private IEnumerator ShockwaveRoutine()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        GameObject shockwave = Instantiate(shockwavePrefab, shootPoint.position, Quaternion.identity);
+
+        Rigidbody2D rb = shockwave.GetComponent<Rigidbody2D>();
+        float moveDirection = transform.localScale.x > 0 ? 1f : -1f;
+        rb.linearVelocity = new Vector2(shockwaveSpeed * moveDirection, 0);
+        animator.SetBool("Attack", false);
     }
 
 }
