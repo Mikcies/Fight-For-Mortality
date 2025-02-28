@@ -5,11 +5,11 @@ public class Shield : MonoBehaviour
 {
     [SerializeField] GameObject playerBullet;
     [SerializeField] Transform bulletSpawnPoint;
-    private Parry parryScript; 
+    private Parry parryScript;
 
     private void Start()
     {
-        parryScript = GetComponentInParent<Parry>(); 
+        parryScript = GetComponentInParent<Parry>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -18,7 +18,14 @@ public class Shield : MonoBehaviour
         {
             Destroy(collision.gameObject);
 
-            Instantiate(playerBullet, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+            GameObject bullet = Instantiate(playerBullet, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+            ParriedBullet bulletScript = bullet.GetComponent<ParriedBullet>();
+
+            if (bulletScript != null)
+            {
+                float direction = transform.root.localScale.x > 0 ? 1f : -1f; // Určuje směr hráče
+                bulletScript.SetDirection(direction);
+            }
 
             if (parryScript != null)
             {
