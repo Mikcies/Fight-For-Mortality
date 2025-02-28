@@ -1327,7 +1327,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8299923468015162910, guid: 74c59d02d0aec9941a4e672a8126ec33, type: 3}
       propertyPath: sceneName
-      value: Boss1
+      value: SwordsmanBoss
       objectReference: {fileID: 0}
     - target: {fileID: 8299923468015162910, guid: 74c59d02d0aec9941a4e672a8126ec33, type: 3}
       propertyPath: interactionText

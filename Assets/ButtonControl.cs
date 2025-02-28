@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.SceneManagement; 
+using UnityEngine.SceneManagement;
 
 public class ButtonControl : MonoBehaviour
 {
@@ -14,4 +14,6 @@ public class ButtonControl : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Time.timeScale = 1;
     }
+
+    public void Test() => Debug.Log("Test");
 }

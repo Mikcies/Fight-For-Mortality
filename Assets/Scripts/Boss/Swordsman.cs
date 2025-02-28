@@ -6,11 +6,11 @@ public class Swordsman : BossBase
     [SerializeField]
     Transform Raycast;
 
-    
+
 
     [Header("Charge")]
-    float speed = 5f; 
-    internal float direction = -1f; 
+    float speed = 5f;
+    internal float direction = -1f;
     internal bool IsCharging = false;
 
     [Header("Jump")]
@@ -24,8 +24,24 @@ public class Swordsman : BossBase
     Transform shootPoint;
     [SerializeField]
     float shockwaveSpeed = 5f;
-    [SerializeField]
 
+    [Header("Counter")]
+    [SerializeField]
+    float blockDuration = 1f;
+    bool isBlocking = false;
+    [SerializeField]
+    GameObject counterProjectilePrefab;
+    [SerializeField]
+    Transform counterShootPoint;
+    [SerializeField]
+    float counterProjectileSpeed = 5f;
+
+
+    [Header("Death")]
+    [SerializeField]
+    GameObject lungObject;
+    [SerializeField]
+    Transform lungSpawnPoint;
     void Start()
     {
         base.Start();
@@ -33,16 +49,21 @@ public class Swordsman : BossBase
 
     protected override void HandleDeath()
     {
-        base.HandleDeath();
+        finalTimeAlive = Mathf.FloorToInt(timeAlive);
+        isDead = true;
+        animator.SetTrigger("Death");
+        Instantiate(lungObject, lungSpawnPoint);
+
     }
 
     protected override void InitializeAttacks()
     {
-        phase1Attacks.Add(Shockwave);
-        phase1Attacks.Add(Charge);
-        phase1Attacks.Add(FallDown);
-        phase1Attacks.Add(Jump);
-        phase2Attacks.Add(FallDown);
+        phase1Attacks.Add(CounterStance);
+        //phase1Attacks.Add(Shockwave);
+        //phase1Attacks.Add(Charge);
+        //phase1Attacks.Add(FallDown);
+        //phase1Attacks.Add(Jump);
+        //phase2Attacks.Add(FallDown);
     }
 
     private void FallDown()
@@ -94,8 +115,8 @@ public class Swordsman : BossBase
 
     private void Jump()
     {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f); 
-            rb.linearVelocity += new Vector2(0f, jumpForce); 
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
+        rb.linearVelocity += new Vector2(0f, jumpForce);
     }
     private void Shockwave()
     {
@@ -113,5 +134,51 @@ public class Swordsman : BossBase
         rb.linearVelocity = new Vector2(shockwaveSpeed * moveDirection, 0);
         animator.SetBool("Attack", false);
     }
+    private void CounterStance()
+    {
+        if (isBlocking) return;
+        StartCoroutine(CounterRoutine());
+    }
 
+    private IEnumerator CounterRoutine()
+    {
+        isBlocking = true;
+        animator.SetBool("Block", true);
+        Debug.Log(isBlocking);
+
+        yield return new WaitForSeconds(blockDuration);
+
+        animator.SetBool("Block", false);
+        isBlocking = false;
+    }
+
+    private void OnHit()
+    {
+        if (isBlocking)
+        {
+            Debug.Log("Counter attack triggered!");
+
+            GameObject projectile = Instantiate(counterProjectilePrefab, counterShootPoint.position, Quaternion.identity);
+            Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
+
+            float direction = transform.localScale.x > 0 ? 1 : -1;
+            rb.linearVelocity = new Vector2(counterProjectileSpeed * direction, 0); 
+
+            rb.gravityScale = 0;
+
+            animator.SetBool("Block", false);
+            isBlocking = false;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!isBlocking) return; 
+
+        if (collision.CompareTag("PlayerBullet")) 
+        {
+            Debug.Log("Hit");
+            OnHit();
+        }
+    }
 }

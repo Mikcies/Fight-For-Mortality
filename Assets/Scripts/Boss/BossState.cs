@@ -127,8 +127,6 @@ public abstract class BossBase : MonoBehaviour
     internal void TakeDamage(int damage)
     {
         if (isDead) return; 
-        Debug.Log("Boss took damage: " + damage);
-        Debug.Log("Current health: " + currentHealth);
         currentHealth -= damage;
         StartCoroutine(FlashRed());
         if (currentHealth <= 0)
