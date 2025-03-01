@@ -883,6 +883,15 @@ MonoBehaviour:
   - {fileID: 1319206932}
   - {fileID: 971067031}
   shatterDuration: 5
+  sporePrefab: {fileID: 8131131266667507964, guid: 7097c7f6bf813d841859dd13e52bbab8, type: 3}
+  sporeIndicatorPrefab: {fileID: 6436237633117617789, guid: d5f4b644e2e3a4d4c8a6e8d747c262f3, type: 3}
+  sporeLifetime: 3
+  indicatorDurationSpore: 1
+  sporeSpawnRadius: 6.5
+  sporeCount: 5
+  teleportCount: 3
+  teleportDelay: 3
+  sporesPerTeleport: 2
 --- !u!50 &437962231
 Rigidbody2D:
   serializedVersion: 5
