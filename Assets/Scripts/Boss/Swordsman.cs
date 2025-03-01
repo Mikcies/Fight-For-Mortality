@@ -58,12 +58,12 @@ public class Swordsman : BossBase
 
     protected override void InitializeAttacks()
     {
-        //phase1Attacks.Add(CounterStance);
+        phase1Attacks.Add(CounterStance);
         phase1Attacks.Add(Shockwave);
         phase1Attacks.Add(Charge);
-    //    phase1Attacks.Add(FallDown);
-    //    phase1Attacks.Add(Jump);
-    //    phase2Attacks.Add(FallDown);
+        phase1Attacks.Add(FallDown);
+        phase1Attacks.Add(Jump);
+        phase2Attacks.Add(FallDown);
     }
 
     private void FallDown()

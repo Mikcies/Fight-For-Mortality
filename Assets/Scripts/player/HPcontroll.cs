@@ -22,7 +22,7 @@ public class HPcontroll : MonoBehaviour
     void Update()
     {
     }
-    void HandleDeath()
+    internal void HandleDeath()
     {
         playerMove player = GetComponent<playerMove>();
         if (player != null)
@@ -49,7 +49,6 @@ public class HPcontroll : MonoBehaviour
     {
         if (collision.gameObject.tag == "EnemyBullet")
         {
-
             if (currentHealth > 0)
             {
                 currentHealth--;
