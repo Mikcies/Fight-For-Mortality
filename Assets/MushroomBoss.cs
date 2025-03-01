@@ -28,21 +28,34 @@ public class MushroomBoss : BossBase
     [SerializeField] private float teleportDelay = 0.5f;
     [SerializeField] private int sporesPerTeleport = 2;
 
+    [Header("Death")]
+    [SerializeField]
+    GameObject liverObject;
+    [SerializeField]
+    Transform liverSpawnPoint;
     void Start()
     {
         base.Start();
     }
-
+    
     protected override void InitializeAttacks()
     {
         phase1Attacks.Add(ActivateSporeBurst);
         phase1Attacks.Add(Teleport);
         phase1Attacks.Add(ShatterPlatform);
 
+        phase2Attacks.Add(Teleport);
         phase2Attacks.Add(ShatterPlatforms);
         phase2Attacks.Add(FrenziedTeleport);
     }
-
+    protected override void HandleDeath()
+    {
+        finalTimeAlive = Mathf.FloorToInt(timeAlive);
+        isDead = true;
+        animator.SetTrigger("Death");
+        collider.enabled = false;
+        Instantiate(liverObject, liverSpawnPoint);
+    }
     private void Teleport()
     {
         if (teleportPoints == null || teleportPoints.Count == 0)
@@ -81,7 +94,7 @@ public class MushroomBoss : BossBase
 
     private IEnumerator IndicateShatter(GameObject platform)
     {
-        Renderer platformRenderer = platform.GetComponent<Renderer>();
+        Renderer platformRenderer = platform.GetComponentInChildren<Renderer>();
         Color originalColor = platformRenderer.material.color;
         Color warningColor = Color.red;
 
@@ -187,6 +200,7 @@ public class MushroomBoss : BossBase
 
     private void ShatterPlatforms()
     {
+        animator.SetBool("Stomp", true);
         if (platforms == null || platforms.Count == 0)
         {
             return;
@@ -214,8 +228,9 @@ public class MushroomBoss : BossBase
 
     private IEnumerator IndicateShatters(GameObject platform)
     {
+        animator.SetBool("Stomp", false);
         shatterDuration = 3f;
-        Renderer platformRenderer = platform.GetComponent<Renderer>();
+        Renderer platformRenderer = platform.GetComponentInChildren<Renderer>();
         Color originalColor = platformRenderer.material.color;
         Color warningColor = Color.red;
 
@@ -237,10 +252,5 @@ public class MushroomBoss : BossBase
         platform.SetActive(false);
         yield return new WaitForSeconds(shatterDuration);
         platform.SetActive(true);
-    }
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, sporeSpawnRadius);
     }
 }

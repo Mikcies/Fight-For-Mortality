@@ -131,6 +131,7 @@ public abstract class BossBase : MonoBehaviour
         StartCoroutine(FlashRed());
         if (currentHealth <= 0)
         {
+            Debug.Log("Boss is dead");
             HandleDeath();
         }
     }
@@ -144,7 +145,8 @@ public abstract class BossBase : MonoBehaviour
 
     protected void ExecuteRandomAttack(List<System.Action> attackList)
     {
-        if(isAttacking) return;
+        if (isDead) return;
+        if (isAttacking) return;
         if (attackList.Count > 0 && Time.time >= lastAttackTime + attackCooldown)
         {
             int randomIndex = Random.Range(0, attackList.Count);
