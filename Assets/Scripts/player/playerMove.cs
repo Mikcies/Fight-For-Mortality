@@ -30,11 +30,27 @@ public class playerMove : MonoBehaviour
     GameObject winCanvas;
     [SerializeField]
     GameObject Hpcounter;
+    private List<string> selectedAbilities = new List<string>();
+
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+        SetAbilities(AbilitySelection.GetSelectedAbilities());
+        ApplyAbilities();
+    }
+    public void SetAbilities(List<string> abilities)
+    {
+        selectedAbilities = abilities;
+    }
+
+    void ApplyAbilities()
+    {
+        if (selectedAbilities.Contains("SpeedBoost"))
+        {
+            Walkspeed *= 1.3f;
+        }
     }
 
     void Update()

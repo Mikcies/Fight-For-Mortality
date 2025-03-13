@@ -22,6 +22,8 @@ public abstract class BossBase : MonoBehaviour
     [SerializeField]
     internal float currentHealth;
 
+    
+
     protected SpriteRenderer spriteRenderer;
     protected Rigidbody2D rb;
 
@@ -118,8 +120,10 @@ public abstract class BossBase : MonoBehaviour
 
     protected virtual void HandleDeath()
     {
-        finalTimeAlive = Mathf.FloorToInt(timeAlive);
+        Debug.Log("Boss is dead");
         isDead = true;
+        
+        finalTimeAlive = Mathf.FloorToInt(timeAlive);
         rb.gravityScale = 1; 
         animator.SetTrigger("Death"); 
     }
@@ -131,7 +135,6 @@ public abstract class BossBase : MonoBehaviour
         StartCoroutine(FlashRed());
         if (currentHealth <= 0)
         {
-            Debug.Log("Boss is dead");
             HandleDeath();
         }
     }
@@ -145,8 +148,7 @@ public abstract class BossBase : MonoBehaviour
 
     protected void ExecuteRandomAttack(List<System.Action> attackList)
     {
-        if (isDead) return;
-        if (isAttacking) return;
+        if (isDead || isAttacking) return;
         if (attackList.Count > 0 && Time.time >= lastAttackTime + attackCooldown)
         {
             int randomIndex = Random.Range(0, attackList.Count);

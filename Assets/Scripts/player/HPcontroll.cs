@@ -1,27 +1,36 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class HPcontroll : MonoBehaviour
 {
-    [SerializeField]
-    int maxHealth = 3;
-    [SerializeField]
-    Animator Animator;
+    [SerializeField] int maxHealth = 3;  
+    [SerializeField] Animator Animator;
     internal int currentHealth;
-    [SerializeField]
-    GameObject loseCanvas;
+    [SerializeField] GameObject loseCanvas;
+
+    private List<string> selectedAbilities = new List<string>(); 
 
     void Start()
     {
-
+        SetAbilities(AbilitySelection.GetSelectedAbilities()); 
+        ApplyAbilities(); 
         currentHealth = maxHealth;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetAbilities(List<string> abilities)
     {
+        selectedAbilities = abilities;
     }
+
+    void ApplyAbilities()
+    {
+        if (selectedAbilities.Contains("ExtraHealth"))
+        {
+            maxHealth += 1; 
+        }
+    }
+
     internal void HandleDeath()
     {
         playerMove player = GetComponent<playerMove>();
@@ -31,7 +40,6 @@ public class HPcontroll : MonoBehaviour
         }
 
         Animator.SetTrigger("Death");
-
         StartCoroutine(WaitForDeathAnimation());
     }
 
@@ -45,34 +53,30 @@ public class HPcontroll : MonoBehaviour
         Time.timeScale = 0;
         loseCanvas.SetActive(true);
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "EnemyBullet")
+        if (collision.gameObject.CompareTag("EnemyBullet"))
         {
-            if (currentHealth > 0)
-            {
-                currentHealth--;
-                Destroy(collision.gameObject);
-                Animator.Play("Hurt");
-            }
-            if(currentHealth == 0)
-            {
-                HandleDeath();
-            }
+            TakeDamage();
+            Destroy(collision.gameObject);
         }
-        if(collision.gameObject.tag == "enemy")
+        if (collision.gameObject.CompareTag("enemy"))
         {
-            if (currentHealth > 0)
-            {
-                currentHealth--;
-                Animator.Play("Hurt");
-            }
-            if (currentHealth == 0)
-            {
-                HandleDeath();
-            }
+            TakeDamage();
         }
-
     }
 
+    void TakeDamage()
+    {
+        if (currentHealth > 0)
+        {
+            currentHealth--;
+            Animator.Play("Hurt");
+        }
+        if (currentHealth == 0)
+        {
+            HandleDeath();
+        }
+    }
 }

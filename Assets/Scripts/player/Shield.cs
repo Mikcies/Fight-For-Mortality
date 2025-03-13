@@ -23,7 +23,7 @@ public class Shield : MonoBehaviour
 
             if (bulletScript != null)
             {
-                float direction = transform.root.localScale.x > 0 ? 1f : -1f; // Určuje směr hráče
+                float direction = transform.root.localScale.x > 0 ? 1f : -1f;
                 bulletScript.SetDirection(direction);
             }
 

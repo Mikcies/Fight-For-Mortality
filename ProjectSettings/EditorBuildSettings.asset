@@ -20,5 +20,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SwordsmanBoss.unity
     guid: 6ad18f4b716611a47800a4d714b84aa1
+  - enabled: 1
+    path: Assets/Scenes/MushroomBoss.unity
+    guid: 27c436bfc85dd9643ab7949fc929802a
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
