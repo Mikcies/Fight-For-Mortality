@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class Swordsman : BossBase
@@ -53,7 +54,6 @@ public class Swordsman : BossBase
         isDead = true;
         animator.SetTrigger("Death");
         Instantiate(lungObject, lungSpawnPoint);
-
     }
 
     protected override void InitializeAttacks()
@@ -63,7 +63,14 @@ public class Swordsman : BossBase
         phase1Attacks.Add(Charge);
         phase1Attacks.Add(FallDown);
         phase1Attacks.Add(Jump);
+
+
         phase2Attacks.Add(FallDown);
+        phase2Attacks.Add(CounterStance);
+        phase2Attacks.Add(ShockwaveSecondPhase);
+        phase2Attacks.Add(ChargeSecondPhase);
+        phase2Attacks.Add(Jump);
+
     }
 
     private void FallDown()
@@ -170,6 +177,65 @@ public class Swordsman : BossBase
             isBlocking = false;
         }
     }
+    void ShockwaveSecondPhase()
+    {
+        animator.SetBool("Attack", true);
+        StartCoroutine(ShockwaveRoutineSecondPhase());
+    }
+
+    private IEnumerator ShockwaveRoutineSecondPhase()
+    {
+
+        StartCoroutine(ShockwaveRoutine());
+
+        yield return new WaitForSeconds(0.75f); 
+
+        StartCoroutine(ShockwaveRoutine());
+        animator.SetBool("Attack", false);
+    }
+    private void ChargeSecondPhase()
+    {
+        animator.SetBool("Charge", true);
+        if (direction < 0)
+            transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        else
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+
+        StartCoroutine(ChargeRoutineSecond());
+    }
+
+    private IEnumerator ChargeRoutineSecond()
+    {
+        for (int i = 0; i < 2; i++)
+        {
+            IsCharging = true;
+            animator.SetBool("Charge", true);
+
+            while (IsCharging)
+            {
+                transform.position += Vector3.right * direction * speed * Time.deltaTime;
+                yield return null;
+            }
+
+            animator.SetBool("Charge", false);
+
+            if (i == 0)
+            {
+                yield return new WaitForSeconds(0.5f);
+                direction *= -1;
+
+                if (Mathf.Sign(transform.localScale.x) != Mathf.Sign(direction))
+                {
+                    Vector3 localScale = transform.localScale;
+                    localScale.x *= -1; 
+                    transform.localScale = localScale;
+                }
+            }
+        }
+    }
+
+
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

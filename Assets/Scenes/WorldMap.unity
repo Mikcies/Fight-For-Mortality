@@ -342,7 +342,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!21 &117342597
+--- !u!21 &252424939
 Material:
   serializedVersion: 8
   m_ObjectHideFlags: 0
@@ -383,7 +383,7 @@ Material:
     - _WidthHeightRadius: {r: 125, g: 125, b: 90, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!21 &341263856
+--- !u!21 &322225884
 Material:
   serializedVersion: 8
   m_ObjectHideFlags: 0
@@ -420,8 +420,8 @@ Material:
     - _StencilWriteMask: 255
     - _UseUIAlphaClip: 0
     m_Colors:
-    - _OuterUV: {r: 0, g: 0, b: 1, a: 1}
-    - _WidthHeightRadius: {r: 125, g: 125, b: 90, a: 0}
+    - _OuterUV: {r: 0, g: 0, b: 1, a: 0.99999994}
+    - _WidthHeightRadius: {r: 966.37, g: 658.38, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!1 &376652049
@@ -458,8 +458,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -290, y: 289}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 2.5, y: 298}
+  m_SizeDelta: {x: 882.38, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &376652051
 MonoBehaviour:
@@ -546,7 +546,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -577.7997, w: 0}
+  m_margin: {x: 0, y: 0, z: 1.1150894, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -594,8 +594,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -156, y: -108}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -2.29, y: -108}
+  m_SizeDelta: {x: 825.58, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &409955399
 MonoBehaviour:
@@ -682,7 +682,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -180.62938, y: 0, z: -497.68524, w: 0}
+  m_margin: {x: 0.88479614, y: 0, z: -0.3658371, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -696,47 +696,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 409955397}
   m_CullTransparentMesh: 1
---- !u!21 &419690755
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: UI/RoundedCorners/RoundedCorners
-  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _ColorMask: 15
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _UseUIAlphaClip: 0
-    m_Colors:
-    - _OuterUV: {r: 0, g: 0, b: 1, a: 1}
-    - _WidthHeightRadius: {r: 125, g: 125, b: 90, a: 0}
-  m_BuildTextureStacks: []
-  m_AllowLocking: 1
 --- !u!21 &421633452
 Material:
   serializedVersion: 8
@@ -778,7 +737,7 @@ Material:
     - _WidthHeightRadius: {r: 125, g: 125, b: 90, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!21 &450900180
+--- !u!21 &466697582
 Material:
   serializedVersion: 8
   m_ObjectHideFlags: 0
@@ -1053,14 +1012,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Etheris, formless and unborn, existed long before the king\u2014an uncreated,
-    unworshipped guardian of hidden laws. When the king sought immortality, Etheris
-    granted it\u2014for the price of his heart. Only after centuries did the king
-    realize immortality was a prison, not a victory.\n\nNow he returns to reclaim
-    what was lost.\n\nEtheris soars above the arena, unleashing razor-sharp feathers,
-    a relentless mass of fur and quills, and a chaotic tornado.\n\nEvery move is
-    calculated, relentless. This is not just a battle\u2014it is a test to see if
-    the king is worthy of reclaiming his heart."
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 20e0d61d950e4b543985405c42a28d92, type: 2}
   m_sharedMaterial: {fileID: -3224873235333687350, guid: 20e0d61d950e4b543985405c42a28d92, type: 2}
@@ -1386,6 +1338,47 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 763121281}
   m_CullTransparentMesh: 1
+--- !u!21 &799268641
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UI/RoundedCorners/RoundedCorners
+  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _ColorMask: 15
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _OuterUV: {r: 0, g: 0, b: 1, a: 1}
+    - _WidthHeightRadius: {r: 125, g: 125, b: 90, a: 0}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
 --- !u!1 &895893456
 GameObject:
   m_ObjectHideFlags: 0
@@ -1520,7 +1513,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 1957983624}
+  m_Material: {fileID: 322225884}
   m_Color: {r: 0.6784314, g: 0.44313726, b: 0.28627452, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -1758,7 +1751,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 1612342114}
+  m_Material: {fileID: 1784699351}
   m_Color: {r: 0.6784314, g: 0.4431373, b: 0.28627452, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -1815,6 +1808,47 @@ MonoBehaviour:
   - {fileID: 1511925763}
   - {fileID: 937654936}
   - {fileID: 1997285279}
+--- !u!21 &985434096
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UI/RoundedCorners/RoundedCorners
+  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _ColorMask: 15
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _OuterUV: {r: 0, g: 0, b: 1, a: 1}
+    - _WidthHeightRadius: {r: 125, g: 125, b: 90, a: 0}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
 --- !u!1001 &1011054938
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2459,47 +2493,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1266981970}
   m_CullTransparentMesh: 1
---- !u!21 &1313658782
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: UI/RoundedCorners/RoundedCorners
-  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _ColorMask: 15
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _UseUIAlphaClip: 0
-    m_Colors:
-    - _OuterUV: {r: 0, g: 0, b: 1, a: 1}
-    - _WidthHeightRadius: {r: 125, g: 125, b: 90, a: 0}
-  m_BuildTextureStacks: []
-  m_AllowLocking: 1
 --- !u!21 &1401130768
 Material:
   serializedVersion: 8
@@ -2754,47 +2747,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!21 &1612342114
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: UI/RoundedCorners/RoundedCorners
-  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _ColorMask: 15
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _UseUIAlphaClip: 0
-    m_Colors:
-    - _OuterUV: {r: 0, g: 0, b: 1, a: 0.99999994}
-    - _WidthHeightRadius: {r: 963.16, g: 658.38, b: 0, a: 0}
-  m_BuildTextureStacks: []
-  m_AllowLocking: 1
 --- !u!1001 &1742033454
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2889,11 +2841,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8299923468015162910, guid: 74c59d02d0aec9941a4e672a8126ec33, type: 3}
       propertyPath: bossLoreString
-      value: ssdgeg
+      value: "Aegir was the second guardian to take a piece of the king\u2019s mortality,
+        claiming his right lung in exchange for immortality. Now, he lingers in a
+        forsaken cemetery, where the air is heavy, suffocating. He does not breathe,
+        yet his presence alone steals the breath of those who trespass.\\n\\n  Aegir
+        shatters the ground with shockwaves, waits in silence to counter, and charges
+        through the mist, reappearing in relentless pursuit.\\n\\n  The king has
+        returned to reclaim what was lost. This is not just a battle\u2014it is a
+        test.\\n\\n"
       objectReference: {fileID: 0}
     - target: {fileID: 8299923468015162910, guid: 74c59d02d0aec9941a4e672a8126ec33, type: 3}
       propertyPath: bossNameString
-      value: aasg
+      value: Aegir, the Breathless Sentinel
       objectReference: {fileID: 0}
     - target: {fileID: 8299923468015162910, guid: 74c59d02d0aec9941a4e672a8126ec33, type: 3}
       propertyPath: interactionText
@@ -2918,6 +2877,47 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8177853752720138617, guid: 74c59d02d0aec9941a4e672a8126ec33, type: 3}
   m_PrefabInstance: {fileID: 1742033454}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &1784699351
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UI/RoundedCorners/RoundedCorners
+  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _ColorMask: 15
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _OuterUV: {r: 0, g: 0, b: 1, a: 0.99999994}
+    - _WidthHeightRadius: {r: 963.16, g: 658.38, b: 0, a: 0}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
 --- !u!1001 &1840372274
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3016,11 +3016,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8299923468015162910, guid: 74c59d02d0aec9941a4e672a8126ec33, type: 3}
       propertyPath: bossLoreString
-      value: wasgw
+      value: "Mycelis was the third guardian to claim a piece of the king\u2019s
+        mortality. Deep within a poisoned swamp, where the waters stagnate and the
+        air is thick with spores, he waits. When the king sought immortality, Mycelis
+        took his liver, binding it to an endless cycle of toxins and regeneration.\\n\\n 
+        Now, his body is a writhing mass of creeping fungi, thriving in the toxic
+        mire. Nothing sets foot in the swamp and lives\u2014everything that falls,
+        rots, and feeds the bloom.\\n\\n  With a deafening stomp, Mycelis cracks
+        the earth, sending a platform crumbling into the depths. In a blur of decay,
+        he vanishes, reappearing in an instant to cut off his prey. Spores billow
+        from his form, drifting outward\u2014silent, deadly, inevitable.\\n\\n  The
+        king has returned to reclaim what was lost. But in this place, even death
+        is only part of the cycle."
       objectReference: {fileID: 0}
     - target: {fileID: 8299923468015162910, guid: 74c59d02d0aec9941a4e672a8126ec33, type: 3}
       propertyPath: bossNameString
-      value: asfgwga
+      value: 'Mycelis, the Blooming Maw '
       objectReference: {fileID: 0}
     - target: {fileID: 8299923468015162910, guid: 74c59d02d0aec9941a4e672a8126ec33, type: 3}
       propertyPath: interactionText
@@ -3074,8 +3085,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 302}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 5.84, y: 296}
+  m_SizeDelta: {x: 763.67, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1843307460
 MonoBehaviour:
@@ -3126,8 +3137,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3164,7 +3175,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -131.253, y: 0, z: -138.34769, w: 0}
+  m_margin: {x: -0.3613739, y: 0, z: 1.8933105, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3315,47 +3326,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!21 &1957983624
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: UI/RoundedCorners/RoundedCorners
-  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _ColorMask: 15
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _UseUIAlphaClip: 0
-    m_Colors:
-    - _OuterUV: {r: 0, g: 0, b: 1, a: 0.99999994}
-    - _WidthHeightRadius: {r: 966.37, g: 658.38, b: 0, a: 0}
-  m_BuildTextureStacks: []
-  m_AllowLocking: 1
 --- !u!1001 &1989649184
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3454,11 +3424,21 @@ PrefabInstance:
       objectReference: {fileID: 1843307460}
     - target: {fileID: 8299923468015162910, guid: 74c59d02d0aec9941a4e672a8126ec33, type: 3}
       propertyPath: bossLoreString
-      value: Dunno FuckoFF
+      value: "The Royal Orchards were once a place of quiet splendor, where golden
+        fruit hung heavy from ancient boughs, and crystal streams wove between towering
+        oaks. Here, the king sharpened his blade, his every strike as fluid as the
+        rivers that fed the land. His crown, a beacon of power, shaped shields of
+        golden light and lashed out with bolts of pure energy.\\n\\n  Time has passed,
+        yet the orchards remain. Roots twist deep, branches stretch skyward, and
+        the air hums with the echoes of battles fought long ago. Not as memories,
+        but as lessons..\\n\\n  Now, beneath the sun-dappled canopy, the king moves
+        once more\u2014sword in hand, crown alight. The weight of lost years falls
+        away. This is not a test. It is a reminder..\\n\\n  A king does not forget
+        how to rule..\\n\\n A warrior does not forget how to fight..\\n\\n"
       objectReference: {fileID: 0}
     - target: {fileID: 8299923468015162910, guid: 74c59d02d0aec9941a4e672a8126ec33, type: 3}
       propertyPath: bossNameString
-      value: Tutorial
+      value: The Royal Orchards
       objectReference: {fileID: 0}
     - target: {fileID: 8299923468015162910, guid: 74c59d02d0aec9941a4e672a8126ec33, type: 3}
       propertyPath: interactionText
@@ -3640,7 +3620,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3777214501821297609, guid: 6f6ae23570afd0246b9d2776677c5976, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Makes your melee attack reach further
+      value: Make you shoot Faster
       objectReference: {fileID: 0}
     - target: {fileID: 3893109906308739955, guid: 6f6ae23570afd0246b9d2776677c5976, type: 3}
       propertyPath: m_Name
@@ -3726,10 +3706,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7965551328543117986, guid: 6f6ae23570afd0246b9d2776677c5976, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 5133482440680535738, guid: e34573c9b6a44a442a7a7eeb3918f74c, type: 3}
     - target: {fileID: 8574347799087329383, guid: 6f6ae23570afd0246b9d2776677c5976, type: 3}
       propertyPath: m_Material
       value: 
-      objectReference: {fileID: 117342597}
+      objectReference: {fileID: 799268641}
     - target: {fileID: 8986854996965396145, guid: 6f6ae23570afd0246b9d2776677c5976, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 0
@@ -3909,6 +3893,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0686f6017cadcd746a2cf3ff23f47a8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!21 &2070248741
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UI/RoundedCorners/RoundedCorners
+  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _ColorMask: 15
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _OuterUV: {r: 0, g: 0, b: 1, a: 1}
+    - _WidthHeightRadius: {r: 125, g: 125, b: 90, a: 0}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
 --- !u!1001 &816224122365576589
 PrefabInstance:
   m_ObjectHideFlags: 0

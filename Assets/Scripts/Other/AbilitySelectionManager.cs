@@ -29,8 +29,7 @@ public class AbilitySelection : MonoBehaviour
             case 0: abilityName = "ExtraHealth"; break;
             case 1: abilityName = "LongerParry"; break;
             case 2: abilityName = "SpeedBoost"; break;
-            case 3: abilityName = "Shield"; break;
-            case 4: abilityName = "DoubleAttack"; break;
+            case 3: abilityName = "Shoot"; break;
         }
 
         if (selectedAbilities.Contains(abilityName))

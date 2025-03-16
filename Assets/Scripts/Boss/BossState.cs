@@ -18,7 +18,7 @@ public abstract class BossBase : MonoBehaviour
     [SerializeField]
     protected BossState currentState = BossState.Idle;
     [SerializeField]
-    protected float maxHealth = 100f;
+    protected float maxHealth;
     [SerializeField]
     internal float currentHealth;
 
@@ -30,7 +30,9 @@ public abstract class BossBase : MonoBehaviour
     protected bool isDead = false; 
     private float flashDuration = 0.1f;
 
+    [SerializeField]
     protected float attackCooldown = 4.5f;
+    [SerializeField]
     protected float phase2AttackCooldown = 2f;
     private float lastAttackTime;
 

@@ -2165,7 +2165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1148156984}
   currentState: 0
-  maxHealth: 300
+  maxHealth: 750
   currentHealth: 100
   heartObject: {fileID: 1919657849745781271, guid: 3c09c560928d151429e611d1e459e4d2, type: 3}
   heartSpawnPoint: {fileID: 1604008648}

@@ -1056,8 +1056,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1284242217}
   currentState: 0
-  maxHealth: 100
+  maxHealth: 1000
   currentHealth: 0
+  attackCooldown: 3.5
+  phase2AttackCooldown: 1.5
   Raycast: {fileID: 1742773992}
   jumpForce: 8.75
   shockwavePrefab: {fileID: 8140435271828606537, guid: 12023c32f395e1147920a7814c9bdf68, type: 3}

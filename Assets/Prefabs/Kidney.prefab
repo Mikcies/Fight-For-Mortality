@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3875358735777666160}
   - component: {fileID: 5715754156114011178}
   m_Layer: 0
-  m_Name: Liver
+  m_Name: Kidney
   m_TagString: Organ
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class rangedAttack : MonoBehaviour
 {
@@ -14,11 +15,29 @@ public class rangedAttack : MonoBehaviour
     private float lastShootTime;
 
     private Transform playerTransform;
+
+    private List<string> selectedAbilities = new List<string>();
+
     Parry parry;
     private void Start()
     {
         parry = GetComponent<Parry>();
         playerTransform = GetComponent<Transform>();
+        SetAbilities(AbilitySelection.GetSelectedAbilities());
+        ApplyAbilities();
+    }
+
+    public void SetAbilities(List<string> abilities)
+    {
+        selectedAbilities = abilities;
+    }
+
+    void ApplyAbilities()
+    {
+        if (selectedAbilities.Contains("Shoot"))
+        {
+            shootCooldown *= 0.75f;
+        }
     }
     void Update()
     {

@@ -594,7 +594,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 699953239}
   currentState: 0
-  maxHealth: 100
+  maxHealth: 600
   currentHealth: 0
   teleportPoints:
   - {fileID: 1356421905}
