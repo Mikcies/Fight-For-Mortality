@@ -19,7 +19,7 @@ public class ParriedBullet : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.linearVelocity = new Vector2(bulletSpeed * direction, 0f); // Nastavení správného směru
+        rb.linearVelocity = new Vector2(bulletSpeed * direction, 0f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -27,10 +27,17 @@ public class ParriedBullet : MonoBehaviour
         if (collision.gameObject.CompareTag("enemy"))
         {
             BossBase enemy = collision.gameObject.GetComponent<BossBase>();
+            Enemy enemy1 = collision.gameObject.GetComponent<Enemy>();
 
             if (enemy != null)
             {
+                Debug.Log("Enemy hit by parried bullet");  
                 enemy.TakeDamage(damage);
+            }
+            if (enemy1 != null)
+            {
+                Debug.Log("Enemy hit by parried bullet");
+                enemy1.TakeDamage(damage);
             }
 
             Destroy(gameObject);

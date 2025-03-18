@@ -65,6 +65,10 @@ public class HPcontroll : MonoBehaviour
         {
             TakeDamage();
         }
+        if(collision.gameObject.CompareTag("DummyBullet"))
+        {
+            Destroy(collision.gameObject);
+        }
     }
 
     void TakeDamage()

@@ -596,6 +596,8 @@ MonoBehaviour:
   currentState: 0
   maxHealth: 600
   currentHealth: 0
+  attackCooldown: 4.5
+  phase2AttackCooldown: 2
   teleportPoints:
   - {fileID: 1356421905}
   - {fileID: 2049889477}
@@ -1558,10 +1560,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8441142100686360521, guid: ce54f45f9426eed4d99a5370d369ebb7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8869158586117722215, guid: ce54f45f9426eed4d99a5370d369ebb7, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

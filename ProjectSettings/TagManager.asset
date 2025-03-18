@@ -12,6 +12,7 @@ TagManager:
   - Organ
   - PlayerBullet
   - swamp
+  - DummyBullet
   layers:
   - Default
   - TransparentFX

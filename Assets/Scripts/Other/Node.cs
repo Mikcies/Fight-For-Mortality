@@ -4,25 +4,22 @@ using TMPro;
 public class NodeManagment : MonoBehaviour
 {
     [SerializeField] internal string sceneName; 
-    [SerializeField] private TMP_Text interactionText;
     [SerializeField] private int nodeIndex;
     [SerializeField] private GameObject abilitySelection;
     [SerializeField] private TMP_Text bossName;
     [SerializeField] private TMP_Text bossLore;
     [SerializeField] private string bossNameString;
     [SerializeField] private string bossLoreString;
-    [SerializeField] private ButtonControl button; 
+    private ButtonControl button; 
     [SerializeField] NodeMovementManager nodeMovementManager;
+    [SerializeField] GameObject legend;
 
     private bool isPlayerHere = false;
 
     void Start()
     {
         abilitySelection.gameObject.SetActive(false);
-        if (interactionText != null)
-        {
-            interactionText.gameObject.SetActive(false);
-        }
+        
 
         if (button == null)
         {
@@ -51,10 +48,12 @@ public class NodeManagment : MonoBehaviour
             abilitySelection.gameObject.SetActive(!abilitySelection.gameObject.activeSelf);
             if(abilitySelection.gameObject.activeSelf)
             {
+                legend.SetActive(false);
                 nodeMovementManager.enabled = false;
             }
             else
             {
+                legend.SetActive(true);
                 nodeMovementManager.enabled = true;
             }
         }
@@ -65,8 +64,6 @@ public class NodeManagment : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             isPlayerHere = true;
-            interactionText.text = $"Press 'E' to enter {sceneName}";
-            interactionText.gameObject.SetActive(true);
         }
     }
 
@@ -75,10 +72,6 @@ public class NodeManagment : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             isPlayerHere = false;
-            if (interactionText != null)
-            {
-                interactionText.gameObject.SetActive(false);
-            }
         }
     }
 

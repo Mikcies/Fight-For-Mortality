@@ -14,7 +14,7 @@ public class Shield : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("EnemyBullet"))
+        if (collision.collider.CompareTag("EnemyBullet") || collision.collider.CompareTag("DummyBullet"))
         {
             Destroy(collision.gameObject);
 

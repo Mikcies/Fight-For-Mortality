@@ -20,12 +20,13 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         StartCoroutine(ShootRoutine()); 
     }
 
     public void TakeDamage(int damage)
     {
+        Debug.Log("Enemy took damage: " + damage);
         currentHealth -= damage;
         StartCoroutine(FlashRed());
         if (currentHealth <= 0)
@@ -43,11 +44,9 @@ public class Enemy : MonoBehaviour
 
     void Die()
     {
-        // animator.SetTrigger("Die");
 
         GetComponent<Collider2D>().enabled = false;
         GetComponent<Rigidbody2D>().gravityScale = 0;
-
         Destroy(gameObject);
         SceneManager.LoadScene("WorldMap"); 
     }

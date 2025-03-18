@@ -6432,6 +6432,7 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 882993103}
   - {fileID: 2021206815}
   - {fileID: 1301178677}
   - {fileID: 652408991}
@@ -6449,5 +6450,4 @@ SceneRoots:
   - {fileID: 806128445}
   - {fileID: 434362406}
   - {fileID: 579125514}
-  - {fileID: 882993103}
   - {fileID: 1583442912}

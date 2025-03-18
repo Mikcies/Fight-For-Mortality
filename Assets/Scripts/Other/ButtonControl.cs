@@ -35,4 +35,12 @@ public class ButtonControl : MonoBehaviour
             Debug.LogError("Scene name is empty!");
         }
     }
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+    public void LoadTutorial()
+    {
+        SceneManager.LoadScene("Tutorial");
+    }
 }

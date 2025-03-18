@@ -9,12 +9,22 @@ public class destroy : MonoBehaviour
         if (collision.gameObject.CompareTag("enemy"))
         {
             BossBase enemy = collision.gameObject.GetComponent<BossBase>();
+            Enemy enemy1 = collision.gameObject.GetComponent<Enemy>();
 
             if (enemy != null)
             {
                 enemy.TakeDamage(damage);
                 Destroy(gameObject);
             }
+            if (enemy1 != null)
+            {
+                enemy1.TakeDamage(damage);
+                Destroy(gameObject);
+            }
+        }
+        if(collision.gameObject.CompareTag("EnemyBullet"))
+        {
+            Destroy(gameObject);
         }
         if (collision.gameObject.CompareTag("Floor"))
         {
